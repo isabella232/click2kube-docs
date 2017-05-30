@@ -1,0 +1,55 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-world
+  labels:
+    commit: latest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+        commit: latest
+    spec:
+      containers:
+      - name: hello-world
+        image: quay.io/wercker/hello-world:latest
+        imagePullPolicy: Always
+        ports:
+        - name: hello-world
+          containerPort: 8080
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world
+  labels:
+    app: hello-world
+    commit: latest
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: hello-world
+    commit: latest
+  type: LoadBalancer
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-world-ingress
+spec:
+  rules:
+  - host: hello-world
+    http:
+      paths:
+      - path:
+        backend:
+          serviceName: hello-world
+          servicePort: 8080
