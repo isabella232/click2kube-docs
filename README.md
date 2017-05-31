@@ -14,6 +14,8 @@ Click2Kube is your own Kubernetes cluster running on high-performance dedicated 
     * [Deploying an application with Wercker: Hello, Wercker!](#wercker-hello-world)
     * [An introduction to Stern](#an-introduction-to-stern)
     * [Installing Prometheus](#installing-prometheus)
+* [Support](#support)
+
 
 ## Overview
 
@@ -31,10 +33,10 @@ You'll always be able to get back to the cluster status page containing the conn
 
 ### What do clusters ship with?
 
-We preinstall some services on to all new clusters to give you a headstart in working with them:
+We pre-install some services on to all new clusters to give you a head start in working with them:
 
-- An Nginx-based Ingress controller
-- Butterfly Console
+- [An Nginx-based Ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-controllers)
+- [Butterfly Console](https://github.com/paradoxxxzero/butterfly)
 
 ## Tutorials
 
@@ -44,7 +46,7 @@ We preinstall some services on to all new clusters to give you a headstart in wo
 
 We've created a simple Hello World application to deploy to your Click2Kube cluster. Deploying this is a simple case of:
 
-1. Get your cluster's load balancer address which is exposed on the cluster status page as a subdomain of your cluster's domain. For example:
+1. Get your cluster's load balancer address which is exposed on the cluster status page as a sub domain of your cluster's domain. For example:
 
 ![Cluster screenshot](https://d3vv6lp55qjaqc.cloudfront.net/items/3V3y3D0O0P3l012q0E0d/Image%202017-05-29%20at%209.02.00%20pm.png)
 
@@ -80,7 +82,7 @@ This quick tutorial will guide you through the process of taking our Hello World
 
 #### Ingress
 
-1. Get your cluster's load balancer IP address which is exposed as a subdomain of your cluster's domain. For example:
+1. Get your cluster's load balancer IP address which is exposed as a sub domain of your cluster's domain. For example:
 
 ![Cluster screenshot](https://d3vv6lp55qjaqc.cloudfront.net/items/3C2z3L1o1C3O0e3t1g1F/%5Bf2a35f624b0f912253f08f648df23e39%5D_Image%25202017-05-29%2520at%25204.55.12%2520pm.png)
 
@@ -97,7 +99,7 @@ You will need write access to a Docker registry of your choice. We used [Quay.io
 
 1. First, fork the [Hello World application](https://github.com/wercker/hello-world) Git repository in to your own GitHub account.
 2. Create a Wercker account: https://app.wercker.com/users/new?return_url=%2F
-3. Select "Create" -> "Application" from the menu and step through the process of linking your Github fork to your Wercker account.
+3. Select "Create" -> "Application" from the menu and step through the process of linking your GitHub fork to your Wercker account.
 
 You should then land on your new application's page:
 
@@ -124,7 +126,7 @@ In order to get an automated end-to-end flow of these pipelines, we need to chai
 
 #### Environment Variables
 
-Next we need to define the environment variables on Wercker Web that we reference in the wercker.yml. These variables reference secrets and values that don't make sense to hold in our git repository. The screenshot of our wercker.yml below shows custom environment variables highlighted in red, and standard Wercker environment variables available in all runs in green. [The Wercker documentation explains these environment variables in more detail.](http://devcenter.wercker.com/docs/environment-variables)
+Next we need to define the environment variables on Wercker Web that we reference in the wercker.yml. These variables reference secrets and values that don't make sense to hold in our git repository. The screen shot of our wercker.yml below shows custom environment variables highlighted in red, and standard Wercker environment variables available in all runs in green. [The Wercker documentation explains these environment variables in more detail.](http://devcenter.wercker.com/docs/environment-variables)
 
 ![Environment variables](https://d3vv6lp55qjaqc.cloudfront.net/items/350G3e0o0B2A0z3s0m2h/%5B118f77ce3b70c4974091f37f1bf7c85c%5D_Image%25202017-05-29%2520at%25208.34.27%2520pm.png)
 
@@ -138,7 +140,7 @@ In order to add the values for these variables we need to define them by selecti
 | KUBERNETES_MASTER | Your Kubernetes API server address from the Click2Kube details page, e.g `https://k8s-master.bf4c05325.obmc.wercker.com` |
 | KUBERNETES_TOKEN  | Your Kubernetes access token, taken from the Click2Kube details page. e.g `w3vcae5v0bl3lsu2dvd7qutb790x683g`             |
 
-Select the "protected" tickbox next to any value if you wish to keep them hidden from the web UI.
+Select the "protected" tick box next to any value if you wish to keep them hidden from the web UI.
 
 Your environment variables tab should look something like this when finished:
 
@@ -186,3 +188,7 @@ To solve this, We released a tool called [Stern](https://github.com/wercker/ster
 ### Installing Prometheus
 
 Prometheus is a popular monitoring tool that can be used to keep an eye on your cluster and the services that run on it. CoreOS recently released [Operators](https://coreos.com/blog/introducing-operators.html), including a Prometheus Operator that allows you to install Prometheus in a few steps. [Follow their tutorial here to install Prometheus](https://coreos.com/blog/the-prometheus-operator.html) on to your Click2Kube cluster.
+
+## Support
+
+If you have any questions that aren't covered in this document or are running in to issues that require assistance, please [open a support ticket](http://bit.ly/2oSljpf) or tweet [@wercker](https://twitter.com/wercker). One of our Solutions Architects or Engineers will be in touch as soon as possible!
