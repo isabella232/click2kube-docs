@@ -29,7 +29,7 @@ Click2Kube is your own Kubernetes cluster running on high-performance dedicated 
 4. This Wercker pipeline sends status updates back to the Click2Kube service as the cluster launch progresses to keep you up to date with what's happening
 5. Once the cluster is provisioned, the Click2Kube service sends OCI cluster connection details which are displayed on the Click2Kube landing page!
 
-You'll always be able to get back to the cluster status page containing the connection details by entering your code on the landing page.
+You'll always be able to get back to the cluster status page containing the connection details by entering your code on the [landing page](http://www.wercker.com/click2kube).
 
 ### What do clusters ship with?
 
