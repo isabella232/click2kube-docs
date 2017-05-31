@@ -6,14 +6,14 @@ Click2Kube is your own Kubernetes cluster running on high-performance dedicated 
 
 ## Table of Contents
 
-* Overview
-    * How does it work?
-    * What do clusters ship with?
-* Tutorials
-    * Deploying an application from the command line
-    * Deploying an application with Wercker: Hello, Wercker!
-    * An introduction to Stern
-    * How to install Prometheus to your Click2Kube cluster
+* [Overview](#overview)
+    * [How does it work?](#how-does-it-work)
+    * [What do clusters ship with?](#what-do-clusters-ship-with)
+* [Tutorials](#tutorials)
+    * [Deploying an application from the command line](#command-line-hello-world)
+    * [Deploying an application with Wercker: Hello, Wercker!](#wercker-hello-world)
+    * [An introduction to Stern](#an-introduction-to-stern)
+    * [Installing Prometheus](#installing-prometheus)
 
 ## Overview
 
@@ -46,7 +46,7 @@ We've created a simple Hello World application to deploy to your Click2Kube clus
 
 1. Get your cluster's load balancer address which is exposed on the cluster status page as a subdomain of your cluster's domain. For example:
 
-![Cluster screenshot](https://d3vv6lp55qjaqc.cloudfront.net/items/3V3y3D0O0P3l012q0E0d/Image%202017-05-29%20at%209.02.00%20pm.png?X-CloudApp-Visitor-Id=229620&v=11a6bf15)
+![Cluster screenshot](https://d3vv6lp55qjaqc.cloudfront.net/items/3V3y3D0O0P3l012q0E0d/Image%202017-05-29%20at%209.02.00%20pm.png)
 
 2. Since the cluster's domain is `bf4c05325.obmc.wercker.com`, the LB ip can be found via:
 
@@ -64,7 +64,7 @@ You can either use this IP directly or create a CNAME DNS entry in your own DNS 
 2. The application can be deployed with:
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/wercker/click2kube-docs/master/hello-world.k8s.yml?token=AArAP22e7her9I5jeL6x1WsHg5wDfmq8ks5ZNfIBwA%3D%3D
+kubectl apply -f https://raw.githubusercontent.com/wercker/click2kube-docs/master/hello-world.k8s.yml
 ```
 
 3. Once deployed, you should be able to access the application at your load balancer address, in this case `129.146.10.47`:
@@ -109,7 +109,7 @@ The demo application repository already contains a wercker.yml, which is split i
 
 1. build: The pipeline that includes steps for installing application dependencies inside of your Wercker run container, before creating a Hello World application binary.
 2. push-quay: The pipeline that takes the output of the `build` pipeline, i.e your binary artifact, builds it in to a Docker image, then pushes that image to a Docker registry.
-3. deploy-to-kubernetes: This pipeline prepares your application's Kubernetes configuration for the current revision of your application by adding the git commit and Docker registry information provided by [Wercker Environment Variables](http://devcenter.wercker.com/docs/environment-variables), before connecting to your Kubernetes cluster and instructing it to create a Kubernetes Service, Deployment, and Ingress.
+3. deploy-to-kubernetes: This pipeline prepares your application's Kubernetes configuration for the current revision of your application by adding the git commit and Docker registry information provided by [Wercker Environment Variables](http://devcenter.wercker.com/docs/environment-variables), before connecting to your Click2Kube cluster and instructing it to create a Kubernetes Service, Deployment, and Ingress.
 
 #### Workflows
 
@@ -173,7 +173,7 @@ Hello, World!%
 
 Success!
 
-### Using Stern
+### An introduction to Stern
 
 Once you've got some applications running on your Click2Kube cluster, you'll likely want to view the logs from pods. One of the limitations of using the `kubectl` command for this is that you can only view the logs of one pod at a time, which isn't ideal for applications that span across multiple pods.
 
