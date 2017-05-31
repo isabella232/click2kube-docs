@@ -2,7 +2,7 @@
 
 # Click2Kube
 
-Click2Kube is your own Kubernetes cluster running on high-performance dedicated Oracle Cloud Infrastructure, launched from a single click by Wercker. It is an initiative created by Wercker for CoreOS fest San Francisco 2017, where access codes will be distributed.
+Click2Kube is your own Kubernetes cluster running on high-performance dedicated Oracle Cloud Infrastructure, launched from a single click by Wercker. It is an initiative created by Wercker for CoreOS Fest San Francisco 2017, wherein invite codes have been distributed. If you don't have one, you can request one [here](http://bit.ly/2recyY1)
 
 ## Table of Contents
 
@@ -24,7 +24,7 @@ Click2Kube is your own Kubernetes cluster running on high-performance dedicated 
 ![How](https://cdn2.hubspot.net/hubfs/2275019/click2kube/Artboard-8@2x.png?t=1496161658110)
 
 1. You receive a code from Wercker in an email
-2. You enter the code on our Click2Kube landing page, which makes a call to the Click2Kube API via the Wercker API
+2. You enter the code on our [Click2Kube](http://www.wercker.com/click2kube#) landing page, which makes a call to the Click2Kube API via the Wercker API
 3. This call then triggers a Click2Kube Wercker pipeline run that configures and runs Terraform inside of Oracle Cloud.
 4. This Wercker pipeline sends status updates back to the Click2Kube service as the cluster launch progresses to keep you up to date with what's happening
 5. Once the cluster is provisioned, the Click2Kube service sends OCI cluster connection details which are displayed on the Click2Kube landing page!
@@ -57,7 +57,7 @@ We've created a simple Hello World application to deploy to your Click2Kube clus
 129.146.10.47
 ```
 
-You can either use this IP directly or create a CNAME DNS entry in your own DNS provider to point your domains to the load balancer domain.
+You can either use this IP directly or create a CNAME DNS entry in your DNS provider to point your domains to the load balancer domain.
 
 #### Deploying your first application
 
@@ -126,11 +126,11 @@ In order to get an automated end-to-end flow of these pipelines, we need to chai
 
 #### Environment Variables
 
-Next we need to define the environment variables on Wercker Web that we reference in the wercker.yml. These variables reference secrets and values that don't make sense to hold in our git repository. The screen shot of our wercker.yml below shows custom environment variables highlighted in red, and standard Wercker environment variables available in all runs in green. [The Wercker documentation explains these environment variables in more detail.](http://devcenter.wercker.com/docs/environment-variables)
+Next, we need to define the environment variables on Wercker Web that we reference in the wercker.yml. These variables reference secrets and values that don't make sense to hold in our git repository. The screen shot of our wercker.yml below shows custom environment variables highlighted in red, and standard Wercker environment variables available in all runs in green. [The Wercker documentation explains these environment variables in more detail.](http://devcenter.wercker.com/docs/environment-variables)
 
 ![Environment variables](https://d3vv6lp55qjaqc.cloudfront.net/items/350G3e0o0B2A0z3s0m2h/%5B118f77ce3b70c4974091f37f1bf7c85c%5D_Image%25202017-05-29%2520at%25208.34.27%2520pm.png)
 
-In order to add the values for these variables we need to define them by selecting the "Environment" tab on your Wercker application, then adding the following:
+To add the values for these variables we need to define them by selecting the "Environment" tab on your Wercker application, then adding the following:
 
 | Name              | Value                                                                                                                    |
 |-------------------|--------------------------------------------------------------------------------------------------------------------------|
@@ -148,7 +148,7 @@ Your environment variables tab should look something like this when finished:
 
 #### Your first run
 
-Now that we've defined the environment variables required, and configured Wercker to run the pipelines defined in wercker.yml, we can instruct Wercker to carry out our first run of our end-to-end pipeline!
+Now that we've defined the environment variables required and configured Wercker to run the pipelines defined in wercker.yml, we can instruct Wercker to carry out our first run of our end-to-end pipeline!
 
 This can be done by going back to the `runs` tab, and selecting `Trigger a build now`, which will start a chain of Wercker pipeline runs, as defined on the Workflows tab:
 
@@ -156,7 +156,7 @@ This can be done by going back to the `runs` tab, and selecting `Trigger a build
 2. If successful, a new run will begin which will create a Docker image from the new binary, then push it to your Docker registry
 3. Once this completes, a third and final run will begin that will run the [Kubectl Step](https://github.com/wercker/step-kubectl) to interact with your Click2Kube cluster, and instruct it to launch an application using the kubernetes.yml file in your application Git repository!
 
-If all three pipelines are successful you can check the status of your new deployment on your Click2Kube cluster with:
+If all three pipelines are successful, you can check the status of your new deployment on your Click2Kube cluster with:
 
 ```
 kubectl get pods
