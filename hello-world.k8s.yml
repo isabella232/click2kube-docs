@@ -46,7 +46,7 @@ metadata:
   name: hello-world-ingress
 spec:
   rules:
-  - host: hello-world
+  - host: hello-world.example.domain
     http:
       paths:
       - path:
