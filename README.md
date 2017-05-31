@@ -2,7 +2,7 @@
 
 # Click2Kube
 
-Click2Kube is your own Kubernetes cluster running on high-performance dedicated Oracle Cloud Infrastructure, launched from a single click by Wercker. It is an initiative created by Wercker for CoreOS Fest San Francisco 2017, wherein invite codes have been distributed. If you don't have one, you can request one [here](http://bit.ly/2recyY1)
+Click2Kube is your own Kubernetes cluster running on high-performance dedicated Oracle Cloud Infrastructure, launched from a single click by Wercker. It is an initiative created by Wercker for CoreOS Fest San Francisco 2017, where invite codes have been distributed. If you don't have one, you can request one [here](http://bit.ly/2recyY1)
 
 ## Table of Contents
 
